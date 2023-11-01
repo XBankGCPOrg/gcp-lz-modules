@@ -17,7 +17,7 @@ resource "google_org_policy_policy" "policy" {
         dynamic "values" {
           for_each = try(rules.value.values, false) ? [1] : []
           content {
-            allowed_values = try(rules.value.vaules.allowedValues, null)
+            allowed_values = try(rules.value.values.allowedValues, null)
             denied_values  = try(rules.value.values.deniedValues, null)
           }
         }
