@@ -10,6 +10,7 @@ variable "policies" {
       name = string
       spec = object({
         inheritFromParent = optional(bool)
+        exists            = optional(bool)
         rules = list(object({
           enforce  = optional(bool)
           allowAll = optional(bool)
