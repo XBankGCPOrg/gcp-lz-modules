@@ -11,7 +11,7 @@ locals {
 }
 
 module "service_identity" {
-  source   = "../../resources/service_identity"
+  source   = "github.com/XBankGCPOrg/gcp-lz-modules//resources/service_identity?ref=main"
   for_each = local.identity_services
   project  = var.name
   service  = each.value
