@@ -3,16 +3,22 @@ variable "name" {
   type        = string
 }
 
+variable "services" {
+  description = "A list of services that will use the key"
+  type        = list(string)
+  default     = []
+}
+
 variable "encrypters" {
   description = "A list of principals that are allowed to encrypt using this key"
   type        = list(string)
-  default     = null
+  default     = []
 }
 
 variable "decrypters" {
   description = "A list of principals that are allowed to decrypt using this key"
   type        = list(string)
-  default     = null
+  default     = []
 }
 
 variable "prevent_destroy" {

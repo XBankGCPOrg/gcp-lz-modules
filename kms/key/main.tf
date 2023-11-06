@@ -1,6 +1,30 @@
 locals {
-  key_ring = var.key_ring != null ? var.key_ring : google_kms_key_ring.key_ring[0].id
-  key      = var.prevent_destroy ? google_kms_crypto_key.type_2_key[0].id : google_kms_crypto_key.type_1_key[0].id
+  key_ring          = var.key_ring != null ? var.key_ring : google_kms_key_ring.key_ring[0].id
+  key               = var.prevent_destroy ? google_kms_crypto_key.type_2_key[0].id : google_kms_crypto_key.type_1_key[0].id
+  identity_services = setsubtract(var.services, ["storage.googleapis.com", "bigquery.googleapis.com"])
+
+  crypters = concat(
+    [for identity in module.service_identity : "serviceAccount:${identity.email}"],
+    contains(var.services, "storage.googleapis.com") ? ["serviceAccount:${data.google_storage_project_service_account.account[0].email_address}"] : [],
+    contains(var.services, "bigquery.googleapis.com") ? ["serviceAccount:${data.google_bigquery_default_service_account.account[0].email}"] : []
+  )
+}
+
+module "service_identity" {
+  source   = "../../resources/service_identity"
+  for_each = local.identity_services
+  project  = var.name
+  service  = each.value
+}
+
+data "google_storage_project_service_account" "account" {
+  count   = contains(var.services, "storage.googleapis.com") ? 1 : 0
+  project = var.name
+}
+
+data "google_bigquery_default_service_account" "account" {
+  count   = contains(var.services, "bigquery.googleapis.com") ? 1 : 0
+  project = var.name
 }
 
 resource "random_string" "suffix" {
@@ -67,12 +91,12 @@ resource "google_kms_crypto_key" "type_2_key" {
 resource "google_kms_crypto_key_iam_binding" "encrypters" {
   crypto_key_id = local.key
   role          = "roles/cloudkms.cryptoKeyEncrypter"
-  members       = var.encrypters
+  members       = concat(var.encrypters, local.crypters)
 }
 
 resource "google_kms_crypto_key_iam_binding" "decrypters" {
   crypto_key_id = local.key
   role          = "roles/cloudkms.cryptoKeyDecrypter"
-  members       = var.decrypters
+  members       = concat(var.decrypters, local.crypters)
 }
 
