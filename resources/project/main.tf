@@ -10,7 +10,7 @@ resource "random_string" "suffix" {
 
 resource "google_project" "project" {
   name                = var.name
-  project_id          = "${var.name}-${local.random}"
+  project_id          = var.imported_project_id == null  ? "${var.name}-${local.random}" : var.imported_project_id
   folder_id           = var.folder
   billing_account     = var.billing_account
   skip_delete         = false

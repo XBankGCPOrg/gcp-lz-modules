@@ -18,6 +18,12 @@ variable "billing_account" {
   type        = string
 }
 
+variable "imported_project_id" {
+  description = "The project is imported or not"
+  type        = string
+  default     = null
+}
+
 variable "labels" {
   description = "The labels for this project"
   type        = map(string)
