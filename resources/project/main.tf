@@ -19,6 +19,7 @@ resource "google_project" "project" {
 }
 
 resource "google_project_default_service_accounts" "accounts" {
+  count          = var.imported_project_id == null ? 1 : 0
   project        = google_project.project.project_id
   action         = "DELETE"
   restore_policy = "NONE"
