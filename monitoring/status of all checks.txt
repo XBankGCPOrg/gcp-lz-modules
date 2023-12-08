@@ -1,0 +1,58 @@
+PS C:\Shivas\OSTTRA\CAP-gcp-poc\gcp-lz-modules\monitoring> checkov -f main.tf
+[ terraform framework ]: 100%|████████████████████|[1/1], Current File Scanned=main.tf
+[ secrets framework ]: 100%|████████████████████|[1/1], Current File Scanned=main.tftf
+
+
+       _               _
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V /
+  \___|_| |_|\___|\___|_|\_\___/ \_/
+
+By Prisma Cloud | version: 3.1.16
+Update available 3.1.16 -> 3.1.27
+Run pip3 install -U checkov to update
+
+
+
+PS C:\Shivas\OSTTRA\CAP-gcp-poc\gcp-lz-modules\monitoring> terraform fmt
+main.tf
+variables.tf
+
+
+
+PS C:\Shivas\OSTTRA\CAP-gcp-poc\gcp-lz-modules\monitoring> tfsec .
+  timings
+  ──────────────────────────────────────────
+  disk i/o             0s
+  parsing              1.9948ms
+  adaptation           0s
+  checks               4.501ms
+  total                6.4958ms
+
+  counts
+  ──────────────────────────────────────────
+  modules downloaded   0
+  modules processed    1
+  blocks processed     15
+  files read           3
+
+  results
+  ──────────────────────────────────────────
+  passed               2
+  ignored              0
+  critical             0
+  high                 0
+  medium               0
+  low                  0
+
+
+No problems detected!
+
+
+PS C:\Shivas\OSTTRA\CAP-gcp-poc\gcp-lz-modules\monitoring> tflint
+PS C:\Shivas\OSTTRA\CAP-gcp-poc\gcp-lz-modules\monitoring>
+
+
+PS C:\Shivas\OSTTRA\CAP-gcp-poc\gcp-lz-modules\monitoring> terraform-docs markdown table ./ > module_docs.md
+PS C:\Shivas\OSTTRA\CAP-gcp-poc\gcp-lz-modules\monitoring>
