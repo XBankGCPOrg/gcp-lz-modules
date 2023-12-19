@@ -90,7 +90,7 @@ resource "google_billing_budget" "budget" {
       //units = startswith(local.budget_projects[count.index], "prj-s-") ? var.budget_config.budget_amount_sandbox : var.budget_config.budget_amount_default
       units = anytrue([
         for project_name in var.budget_config.projects :
-        startswith(project_name, var.budget_config.project_prefix) && var.budget_config.project_prefix != ""
+        startswith(project_name, var.budget_config.project_prefix) && var.budget_config.project_prefix != "prj-s"
       ]) ? var.budget_config.budget_amount_sandbox : var.budget_config.budget_amount_default
     }
 
