@@ -87,9 +87,9 @@ variable "monitoring_config" {
     bandwidth_alert_per_series_aligner      = string
     bandwidth_alert_combiner                = string
 
-    monitoring_notification_channels = list(string)
-    email_notification_display_name  = string
-    email_notification_address       = string
+    # monitoring_notification_channels = list(string)
+    email_notification_display_name = string
+    email_notification_address      = string
   })
   /*default ={
       project_id                         = "prj-s-my-test-project-85526"

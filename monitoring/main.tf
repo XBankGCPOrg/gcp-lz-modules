@@ -108,7 +108,7 @@ resource "google_monitoring_alert_policy" "high_cpu_alert" {
   }
 
 
-  notification_channels = var.monitoring_config.monitoring_notification_channels
+  notification_channels = google_monitoring_notification_channel.email.id
 }
 
 // Set up an alert policy for memory utilization
@@ -132,7 +132,7 @@ resource "google_monitoring_alert_policy" "memory_alert" {
   }
 
 
-  notification_channels = var.monitoring_config.monitoring_notification_channels
+  notification_channels = google_monitoring_notification_channel.email.id
 }
 
 
@@ -157,7 +157,7 @@ resource "google_monitoring_alert_policy" "iops_alert" {
   }
 
 
-  notification_channels = var.monitoring_config.monitoring_notification_channels
+  notification_channels = google_monitoring_notification_channel.email.id
 }
 
 // Set up an alert policy for API Requests
@@ -181,7 +181,7 @@ resource "google_monitoring_alert_policy" "api_requests_alert" {
   }
 
 
-  notification_channels = var.monitoring_config.monitoring_notification_channels
+  notification_channels = google_monitoring_notification_channel.email.id
 }
 
 // Set up an alert policy for bandwidth
@@ -205,7 +205,7 @@ resource "google_monitoring_alert_policy" "bandwidth_alert" {
   }
 
 
-  notification_channels = var.monitoring_config.monitoring_notification_channels
+  notification_channels = google_monitoring_notification_channel.email.id
 }
 
 resource "google_monitoring_notification_channel" "email" {
