@@ -9,13 +9,13 @@ terraform {
   }
 }
 locals {
-  project_name     = length(var.budget_config.projects) == 0 ? "All Projects" : var.budget_config.projects[0]
-  display_name     = var.budget_config.display_name == null ? "Budget For ${local.project_name}" : var.budget_config.display_name
-  all_updates_rule = var.budget_config.alert_pubsub_topic == null && length(var.budget_config.monitoring_notification_channels) == 0 ? [] : ["1"]
-  custom_period    = var.budget_config.calendar_period == "CUSTOM" ? [1] : []
-  start_date       = length(local.custom_period) != 0 ? split("-", var.budget_config.custom_period_start_date) : null
-  end_date         = length(local.custom_period) != 0 ? split("-", var.budget_config.custom_period_end_date) : null
-  budget_projects  = var.budget_config.create_budget ? var.budget_config.projects : []
+  project_name = length(var.budget_config.projects) == 0 ? "All Projects" : var.budget_config.projects[0]
+  display_name = var.budget_config.display_name == null ? "Budget For ${local.project_name}" : var.budget_config.display_name
+  #all_updates_rule = var.budget_config.alert_pubsub_topic == null && length(var.budget_config.monitoring_notification_channels) == 0 ? [] : ["1"]
+  custom_period   = var.budget_config.calendar_period == "CUSTOM" ? [1] : []
+  start_date      = length(local.custom_period) != 0 ? split("-", var.budget_config.custom_period_start_date) : null
+  end_date        = length(local.custom_period) != 0 ? split("-", var.budget_config.custom_period_end_date) : null
+  budget_projects = var.budget_config.create_budget ? var.budget_config.projects : []
 
 
 
