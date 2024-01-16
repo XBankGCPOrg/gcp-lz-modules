@@ -77,12 +77,9 @@ resource "google_billing_budget" "budget" {
     }
   }
 
-  dynamic "all_updates_rule" {
-    for_each = local.all_updates_rule
-    content {
-      pubsub_topic                     = var.budget_config.alert_pubsub_topic
-      monitoring_notification_channels = var.budget_config.monitoring_notification_channels
-    }
+  all_updates_rule {
+    pubsub_topic                     = var.budget_config.alert_pubsub_topic
+    monitoring_notification_channels = var.budget_config.monitoring_notification_channels
   }
   amount {
     specified_amount {
