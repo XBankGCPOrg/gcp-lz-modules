@@ -2,10 +2,10 @@ name: common/precheck
 on:
   push:
     branches:
-      - main
+      - v2 #main
   pull_request:
     branches:
-      - main
+      - v2 #main
 
 jobs:
   precheck:

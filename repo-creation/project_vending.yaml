@@ -40,7 +40,7 @@ repositories:
 branch_protection:
   main:
     branch:
-      - main
+      - v2 #main
     require_signed_commits: true
     enforce_admins: false
     require_conversation_resolution: true
