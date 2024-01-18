@@ -30,7 +30,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_shared_vpc"></a> [shared\_vpc](#input\_shared\_vpc) | n/a | <pre>object({<br>    project         = string<br>    service_project = string<br>    service_account = string<br>    subnet          = string<br>  })</pre> | n/a | yes |
+| <a name="input_shared_vpc"></a> [shared\_vpc](#input\_shared\_vpc) | n/a | <pre>object({<br>    host_project    = string<br>    service_project = string<br>    service_account = string<br>    subnet          = list(string)<br>  })</pre> | n/a | yes |
 
 ## Outputs
 

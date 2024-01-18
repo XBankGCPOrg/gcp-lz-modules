@@ -17,7 +17,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_private-standard-cluster"></a> [private-standard-cluster](#module\_private-standard-cluster) | git::https://github.com/terraform-google-modules/terraform-google-kubernetes-engine.git//modules/private-cluster | 67b67f38e46306c7a4e0a1690d7fcb9b551874e1 |
+| <a name="module_private-standard-cluster"></a> [private-standard-cluster](#module\_private-standard-cluster) | git::https://github.com/terraform-google-modules/terraform-google-kubernetes-engine.git//modules/private-cluster | v2 |
 
 ## Resources
 

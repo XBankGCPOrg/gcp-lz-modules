@@ -21,7 +21,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_service_identity"></a> [service\_identity](#module\_service\_identity) | github.com/XBankGCPOrg/gcp-lz-modules//resources/service_identity | 35e1ac51b81725fb3378b83f10f3cae9b2956e78 |
+| <a name="module_service_identity"></a> [service\_identity](#module\_service\_identity) | github.com/XBankGCPOrg/gcp-lz-modules//resources/service_identity | v2 |
 
 ## Resources
 
