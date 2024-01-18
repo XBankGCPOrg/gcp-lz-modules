@@ -1,12 +1,21 @@
-# Enable A Shared VPC in the host project
-resource "google_compute_shared_vpc_host_project" "host" {
-  project = var.shared_vpc.project # Replace this with your host project ID in quotes
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = ">= 5.7.0"
+    }
+  }
 }
 
-# To attach a first service project with host project 
+resource "google_compute_shared_vpc_host_project" "host" {
+  project = var.shared_vpc.project #Host project ID
+}
+
 resource "google_compute_shared_vpc_service_project" "service" {
   host_project    = google_compute_shared_vpc_host_project.host.project
-  service_project = var.shared_vpc.service_project # Replace this with your service project ID in quotes
+  service_project = var.shared_vpc.service_project #Service Project ID
 }
 
 resource "google_project_iam_member" "shared_subnet" {
@@ -15,8 +24,8 @@ resource "google_project_iam_member" "shared_subnet" {
   member  = var.shared_vpc.service_account
 
   condition {
-    title       = "shared_subnets"
-    description = "Shared Subnet"
-    expression  = "resource.name.startsWith('${var.shared_vpc.subnet}')"
+    title       = "shared_subnet"
+    description = "Subet Shared"
+    expression  = "resource.name.startWith('${var.shared_vpc.subnet}')"
   }
 }

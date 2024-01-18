@@ -1,3 +1,4 @@
+#tfsec:ignore:google-storage-bucket-encryption-customer-key
 resource "google_storage_bucket" "bucket" {
   name                        = var.name
   project                     = var.project

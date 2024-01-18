@@ -13,10 +13,10 @@ variable "location" {
   type        = string
 }
 
-variable "data_classification" {
-  description = "The classification for the data"
-  type        = string
-}
+#variable "data_classification" {
+#  description = "The classification for the data"
+#  type        = string
+#}
 
 variable "kms_key_id" {
   description = "KMS key for CMEK encryption"

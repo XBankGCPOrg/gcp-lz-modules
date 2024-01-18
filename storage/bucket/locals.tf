@@ -1,3 +1,4 @@
+/*
 locals {
   data_classifications = {
     internal = {
@@ -5,3 +6,4 @@ locals {
     }
   }
 }
+*/

@@ -1,0 +1,36 @@
+gcp-lz-bigquery:
+  - bigquery/**
+
+gcp-lz-compute:
+  - compute/**
+
+gcp-lz-artifact-registry:
+  - devops/artifact_registry/**
+
+gcp-lz-repository:
+  - devops/repository/**
+
+gcp-lz-iam:
+  - iam/**
+
+gcp-lz-kms:
+  - kms/**
+
+gcp-lz-log-sink:
+  - log_sink/**
+
+gcp-lz-pubsub:
+  - pubsub/**
+
+gcp-lz-resources:
+  - resources/**
+
+gcp-lz-storage:
+  - storage/**
+
+gcp-lz-network:
+  - network/**
+
+gcp-lz-github-workflow:
+  - .github/workflows/**
+

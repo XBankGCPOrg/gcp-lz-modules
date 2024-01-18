@@ -11,7 +11,7 @@ locals {
 }
 
 module "service_identity" {
-  source   = "github.com/XBankGCPOrg/gcp-lz-modules//resources/service_identity?ref=main"
+  source   = "github.com/XBankGCPOrg/gcp-lz-modules//resources/service_identity?ref=v2"
   for_each = local.identity_services
   project  = var.name
   service  = each.value
@@ -42,9 +42,10 @@ resource "google_kms_key_ring" "key_ring" {
 
 #terraform destroy will delete this kms key
 resource "google_kms_crypto_key" "type_1_key" {
-  count                      = var.prevent_destroy ? 0 : 1
-  name                       = var.name
-  key_ring                   = local.key_ring
+  count    = var.prevent_destroy ? 0 : 1
+  name     = var.name
+  key_ring = local.key_ring
+  #checkov:skip=CKV_GCP_43:KMS key rotation period is set to 90days
   rotation_period            = var.rotation_period
   destroy_scheduled_duration = var.destroy_scheduled_duration
   purpose                    = var.purpose
@@ -58,7 +59,7 @@ resource "google_kms_crypto_key" "type_1_key" {
       protection_level = var.protection_level
     }
   }
-
+  #checkov:skip=CKV_GCP_82:KMS deletion prevention is type_2_key
   lifecycle {
     prevent_destroy = false
   }
@@ -99,4 +100,3 @@ resource "google_kms_crypto_key_iam_binding" "decrypters" {
   role          = "roles/cloudkms.cryptoKeyDecrypter"
   members       = concat(var.decrypters, local.crypters)
 }
-

@@ -19,7 +19,7 @@ variable "billing_account" {
 }
 
 variable "imported_project_id" {
-  description = "The project is imported or not"
+  description = "The project id for importing project"
   type        = string
   default     = null
 }

@@ -9,6 +9,7 @@ resource "random_string" "suffix" {
 }
 
 resource "google_project" "project" {
+  #checkov:skip=CKV2_GCP_5:  "Ensure that Cloud Audit Logging is configured properly across all services and all users from a project"  it enabled across all the project
   name                = var.name
   project_id          = var.imported_project_id == null ? "${var.name}-${local.random}" : var.imported_project_id
   folder_id           = var.folder

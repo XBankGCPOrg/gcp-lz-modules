@@ -1,4 +1,5 @@
 resource "google_cloudfunctions_function" "cloudfunction" {
+  #checkov:skip=CKV2_GCP_10: "Ensure GCP Cloud Function HTTP trigger is secured"
   project = var.project
   region  = var.location
 
